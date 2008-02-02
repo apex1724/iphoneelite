@@ -158,7 +158,7 @@ The following shows the location and purpose of the modifications made to the st
 || 0xC7DC || 0xB4 || 0xE4 || Change MismatchedICCID to FactoryActivated ||
 || 0xC8AC || 0xB0 0x33 || 0x14 0x34 || Change Unactivated to FactoryActivated ||
 || 0xC904 || 0x01 || 0x00 || Change enable brick mode to disable ||
-
+ 
 
 = Issues with the Current Work =
 
