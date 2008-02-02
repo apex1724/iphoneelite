@@ -29,59 +29,32 @@ Certain versions of iPHUC allow the user to retrieve the current activation stat
 The following process outlines the steps that are used to authenticate an account token.
 
  # An activation token is received by the device, or the current activation state is queried.
-
  # The activation token's cryptographic signature is checked.
-
  # The unique device ID is retrieved from the data ark.
-
  # The activation state is retrieved from the data ark. If the activation state is not successfully retrieved, then the new activation state is set to Unactivated, bEnableBrickState is set to true, aPreviousActivationState is set to false, and it jumps to step 22.
-
  # The account token is retrieved from the data given to the function. If the account token is not successfully retrieved, then set the new activation state to Unactivated, register no unlock code, and it jumps to step 21.
-
  # Attempt to create a property list from the XML data. If this fails, then set the new activation state to Unactivated, register no unlock code, and jump to step 21.
-
  # Attempt to get the unique device ID from the account token. If this fails, then set the new activation state to Unactivated, set the unlock code to no unlock code, and jump to step 21.
-
  # Check to see if the unique device IDs match. If they do not match, jump to step 9.
-
  # Check to see if lockdownd is running on the iPhone. If it isn't, then set the new activation state to Activated and jump to step 21.
-
  # Check to see if the activation token has a FactoryActivation key set to true or if the account token was validated by a factory certificate. If either is true, then set the new activation state to FactoryActivated, set the unlock code to none, and jump to step 21.
  # Get the IntegratedCircuitCardIdentity value from the data ark. If this fails, then set the new activation state to MissingSIM and jump to step 14.
-
  # Get the IntegratedCircuitCardIdentity value from the activation token. If this fails, then set the new activation state to SoftActivation and jump to step 14.
-
  # Compare the new IntegratedCircuitCardIdentity values from steps 11 and 12. If they match, then set the new activation state to Activated. If they do not, then set the new activation state to MismatchedICCID.
-
  # Look up the InternationalMobileSubscriberIdentity from the data ark. If this fails, then go to step 17.
-
  # Look up the InternationalMobileSubscriberIdentity from the account token. If this fails, then go to step 17.
-
  # Compare the InternationalMobileSubscriberIdentity from steps 14 and 15. If they do not match, then set the new activation state to MismatchedICCID.
-
  # Check to see if the account token contains an unlock code. If it does, then register the unlock code and set the new activation state to Unlocked.
-
  # Retrieve the InternationalMobileEquipmentIdentity from the data ark. On failure, jump to step 21.
-
  # Retrieve the InternationalMobileEquipmentIdentity from the account token. On failure, jump to step 21.
-
  # Compare the InternationalMobileEquipmentIdentity from steps 18 and 19. If they do not match, then set the new activation state to Unactivated.
-
  # If the new activation state is Unactivated or MismatchedICCID, then set bEnableBrickState to true. Otherwise, set it to false.
-
  # Check to see if lockdownd is running on the iPhone. If it isn't, then jump to step 25.
  # Get the current brick state from the data ark.
-
  # If the current brick state is different from the bEnableBrickState value, then set the new brick state to bEnableBrickState from the data ark.
-
  # Check to see if aPreviousActivationState is true. If not, then jump to step 30.
-
  # Check to see if the new activation state is Unlocked. If not, then jump to step 28.
-
  # Attempt to unlock the modem with the supplied lock code and set the new activation state to Activated.
-
  # Set the activation state to the new activation state in the data ark and in the lockdown cache.
-
  # If bEnableBrickState is true, then enable the brick state in the CoreTelephonyServer.
-
  # Finished.
