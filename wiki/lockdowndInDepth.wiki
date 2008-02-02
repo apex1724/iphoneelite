@@ -88,3 +88,15 @@ In addition, parts of Apple's security logic have also been circumvented. All pa
 = lockdownd Patches =
 
 The following shows the location and purpose of the modifications made to the stock lockdownd binary.
+
+== 1.0.0 ==
+
+|| Offset || Original Byte || New Byte || Reason ||
+|| 0x8CF8 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x90A4 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x90A8 || 0x3C || 0x68 || Change Unactivated to FactoryActivated ||
+|| 0x9178 || 0x84 || 0x98 || Change MismatchedIMEI to FactoryActivated ||
+|| 0x91B8 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x91D8 || 0x2C || 0x38 || Change MismatchedICCID to FactoryActivated ||
+|| 0x91E0 || 0x28 || 0x30 || Change MissingSIM to FactoryActivated ||
+|| 0x9258 || 0x01 || 0x00 || Change enable brick mode to disable ||
