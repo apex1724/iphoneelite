@@ -159,6 +159,7 @@ The following shows the location and purpose of the modifications made to the st
 || 0xC8AC || 0xB0 0x33 || 0x14 0x34 || Change Unactivated to FactoryActivated ||
 || 0xC904 || 0x01 || 0x00 || Change enable brick mode to disable ||
 
+
 = Issues with the Current Work =
 
 If brick mode has been enabled on the iPhone, usually lockdownd stores a record that it has been enabled. However, it has been observed that a different lockdownd can enable brick mode without storing this record. When this happens, the current lockdownd is unaware of the brick mode state and won't disable brick mode. GUI access will still be allowed to the iPhone, but the phone will appear to get no signal. This is a limitation in the original design of the software. A piece of software is available, called bricktool, that will allow a user to enable or disable brick mode outside of lockdownd and fixes this issue.
