@@ -1,0 +1,87 @@
+#summary In-depth information about lockdownd
+#labels Featured
+= Overview =
+
+The lockdownd binary is responsible for several tasks, including activation, unlocking FairPlay DRM certificates, delegating communications to other services, and ensuring that Apple's security logic is implemented, to prevent people from using their iPhones in an unintended manner. This binary is the one that is either fooled or modified to allow activation, on an iPhone, that is not considered proper by Apple.
+
+= Activation States =
+
+The iPhone has been designed so that it must be properly activated before it may be used. The lockdownd binary is responsible for maintaining and verifying the activation state. The current 1.1.2 lockdownd binary has the following activation states:
+
+*Unactivated*: This state prevents the GUI on the iPhone from being accessed. In addition, it causes the modem to have no signal and only allows iTunes to attempt activation.
+
+*Activated*: This state allows full access to the GUI and the modem. iTunes also allows full functionality.
+
+*FactoryActivated*: This state allows full access to the GUI and the modem. It is made for quality control personnel to inspect the functionality of the phone.
+
+*SoftActivation*: This state is used by AppleCare, and does not specify an ICCID. It allows full access to the GUI and full access from iTunes. It may be used with any SIM card.
+
+*MissingSIM*: This state causes iTunes to display a message box informing the user that the iPhone may not be used with iTunes until a SIM card is installed. Full access to the GUI is allowed.
+
+*MismatchedICCID*: This state is entered when the current SIM card's ICCID does not match the activation token's ICCID. It allows full access to the GUI, but the modem is disabled.
+
+*MismatchedIMEI*: This state is never entered. It is intended for when the current IMEI does not match the one in the activation token.
+
+Certain versions of iPHUC allow the user to retrieve the current activation state. In order to do this, connect an iPhone to your computer, in standard mode, and issue the command *readvalue ActivationState*. Versions compiled for Windows generally attempt to use CFShow to display the activation state. Unfortunately, this function is not documented to work on the Windows OS. However, the version of iPhoneInterface that accompanies iBrickr will correctly display the activation state.
+
+= Activation Verification =
+
+The following process outlines the steps that are used to authenticate an account token.
+
+ # An activation token is received by the device, or the current activation state is queried.
+
+ # The activation token's cryptographic signature is checked.
+
+ # The unique device ID is retrieved from the data ark.
+
+ # The activation state is retrieved from the data ark. If the activation state is not successfully retrieved, then the new activation state is set to Unactivated, bEnableBrickState is set to true, aPreviousActivationState is set to false, and it jumps to step 22.
+
+ # The account token is retrieved from the data given to the function. If the account token is not successfully retrieved, then set the new activation state to Unactivated, register no unlock code, and it jumps to step 21.
+
+ # Attempt to create a property list from the XML data. If this fails, then set the new activation state to Unactivated, register no unlock code, and jump to step 21.
+
+ # Attempt to get the unique device ID from the account token. If this fails, then set the new activation state to Unactivated, set the unlock code to no unlock code, and jump to step 21.
+
+ # Check to see if the unique device IDs match. If they do not match, jump to step 9.
+
+ # Check to see if lockdownd is running on the iPhone. If it isn't, then set the new activation state to Activated and jump to step 21.
+
+ # Check to see if the activation token has a FactoryActivation key set to true or if the account token was validated by a factory certificate. If either is true, then set the new activation state to FactoryActivated, set the unlock code to none, and jump to step 21.
+ # Get the IntegratedCircuitCardIdentity value from the data ark. If this fails, then set the new activation state to MissingSIM and jump to step 14.
+
+ # Get the IntegratedCircuitCardIdentity value from the activation token. If this fails, then set the new activation state to SoftActivation and jump to step 14.
+
+ # Compare the new IntegratedCircuitCardIdentity values from steps 11 and 12. If they match, then set the new activation state to Activated. If they do not, then set the new activation state to MismatchedICCID.
+
+ # Look up the InternationalMobileSubscriberIdentity from the data ark. If this fails, then go to step 17.
+
+ # Look up the InternationalMobileSubscriberIdentity from the account token. If this fails, then go to step 17.
+
+ # Compare the InternationalMobileSubscriberIdentity from steps 14 and 15. If they do not match, then set the new activation state to MismatchedICCID.
+
+ # Check to see if the account token contains an unlock code. If it does, then register the unlock code and set the new activation state to Unlocked.
+
+ # Retrieve the InternationalMobileEquipmentIdentity from the data ark. On failure, jump to step 21.
+
+ # Retrieve the InternationalMobileEquipmentIdentity from the account token. On failure, jump to step 21.
+
+ # Compare the InternationalMobileEquipmentIdentity from steps 18 and 19. If they do not match, then set the new activation state to Unactivated.
+
+ # If the new activation state is Unactivated or MismatchedICCID, then set bEnableBrickState to true. Otherwise, set it to false.
+
+ # Check to see if lockdownd is running on the iPhone. If it isn't, then jump to step 25.
+ # Get the current brick state from the data ark.
+
+ # If the current brick state is different from the bEnableBrickState value, then set the new brick state to bEnableBrickState from the data ark.
+
+ # Check to see if aPreviousActivationState is true. If not, then jump to step 30.
+
+ # Check to see if the new activation state is Unlocked. If not, then jump to step 28.
+
+ # Attempt to unlock the modem with the supplied lock code and set the new activation state to Activated.
+
+ # Set the activation state to the new activation state in the data ark and in the lockdown cache.
+
+ # If bEnableBrickState is true, then enable the brick state in the CoreTelephonyServer.
+
+ # Finished.
