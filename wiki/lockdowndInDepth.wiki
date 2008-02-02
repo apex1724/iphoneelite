@@ -91,7 +91,7 @@ The following shows the location and purpose of the modifications made to the st
 
 == 1.0.0 ==
 
-|| Offset || Original Byte || New Byte || Reason ||
+|| *Offset* || *Original Byte* || *New Byte* || *Reason* ||
 || 0x8CF8 || 0x01 || 0x00 || Change enable brick mode to disable ||
 || 0x90A4 || 0x01 || 0x00 || Change enable brick mode to disable ||
 || 0x90A8 || 0x3C || 0x68 || Change Unactivated to FactoryActivated ||
@@ -100,3 +100,27 @@ The following shows the location and purpose of the modifications made to the st
 || 0x91D8 || 0x2C || 0x38 || Change MismatchedICCID to FactoryActivated ||
 || 0x91E0 || 0x28 || 0x30 || Change MissingSIM to FactoryActivated ||
 || 0x9258 || 0x01 || 0x00 || Change enable brick mode to disable ||
+
+== 1.0.1 ==
+
+|| *Offset* || *Original Byte* || *New Byte* || *Reason* ||
+|| 0x9158 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x94C4 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x94C8 || 0x3C || 0x68 || Change Unactivated to FactoryActivated ||
+|| 0x9598 || 0x84 || 0x98 || Change MismatchedIMEI to FactoryActivated ||
+|| 0x95D8 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x95F8 || 0x2C || 0x38 || Change MismatchedICCID to FactoryActivated ||
+|| 0x9600 || 0x28 || 0x30 || Change MissingSIM to FactoryActivated ||
+|| 0x9678 || 0x01 || 0x00 || Change enable brick mode to disable ||
+
+== 1.0.2 ==
+
+|| *Offset* || *Original Byte* || *New Byte* || *Reason* ||
+|| 0x9184 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x94F0 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x94F4 || 0x3C || 0x68 || Change Unactivated to FactoryActivated ||
+|| 0x95C4 || 0x84 || 0x98 || Change MismatchedIMEI to FactoryActivated ||
+|| 0x9604 || 0x01 || 0x00 || Change enable brick mode to disable ||
+|| 0x9624 || 0x2C || 0x38 || Change MismatchedICCID to FactoryActivated ||
+|| 0x962C || 0x28 || 0x30 || Change MissingSIM to FactoryActivated ||
+|| 0x96A4 || 0x01 || 0x00 || Change enable brick mode to disable ||
