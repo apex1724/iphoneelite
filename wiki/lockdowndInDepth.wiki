@@ -58,3 +58,33 @@ The following process outlines the steps that are used to authenticate an accoun
  # Set the activation state to the new activation state in the data ark and in the lockdown cache.
  # If bEnableBrickState is true, then enable the brick state in the CoreTelephonyServer.
  # Finished.
+
+= Apple Security Logic =
+
+Another task the lockdownd binary is concerned with is ensuring that the iPhone is in a state that Apple deems proper. One of these checks ensures that the modem's firmware version is consistent with the version that is distributed alongside the iPhone software. If these versions differ, then the modem is put into brick mode. Brick mode causes the modem to not register to any carrier and it will display no signal within the GUI.
+
+Additionally, there are some references inside the lockdownd binary to voiding the warranty. It appears that iTunes may send messages to the iPhone informing it that its warranty is invalid. It is an assumption that this is used because it would be hard for Apple to determine if an iPhone is outside of its warranty when it has its software completely reloaded.
+
+= Prior Work by Others =
+
+DVD Jon created an activation method that worked with older versions of the iPhone firmware. DVD Jon's method patched iTunes to use HTTP instead of HTTPS for the activation server, and redirected the activation requests to the Phone Activation Server. The Phone Activation Server would then send a valid account token to the iPhone. However, the account token was for a different IMEI, ICCID, and DeviceID. This method left the phone in the MismatchedICCID state, but allowed access to the user interface.
+
+An activation method called iASign was released by the iPhone Dev Team. This activation method would change the certificates on the iPhone and would send an activation token that was signed by the new certificates. This allowed fully compliant tokens, however, it required a lengthy process to activate the iPhone.
+
+Several patches have been distributed that modify the lockdownd binary directly. These patches generally modify the routine that checks the activation state of the iPhone and cause it to always believe it has been factory activated. The way this is done is to change step 4 to set the new activation state to FactoryActivated, set bEnableBrickState to false, and set aPreviousActivationState to false, and then jump to step 22.
+
+= Improvements Upon Prior Work =
+
+DVD Jon's activation method allows use of the iPhone GUI, but it does not allow use of the phone. iASign allows use of both the GUI and the phone, but it does not allow changing the SIM card without generating a new account token. Neither of the aforementioned activation methods will allow use of the iPhone with iTunes if a SIM card is not installed, and they leave the security logic intact.
+
+The current patches to the lockdownd binary circumvent the previous issues. However, they do not bypass Apple's security logic. They will also not allow a person who has installed these patches, to unlock their phones via an Apple-supplied unlock code without reinstalling lockdownd. Finally, they are incompatible with alternate or additional unlock methods such as iASign.
+
+= Current Work =
+
+The current patches have been developed to modify the verification process so that brick mode is never enabled, and all references to Unactivated, MissingSIM, MismatchedICCID, and MismatchedIMEI have been changed to FactoryActivated. This allows people who have valid account tokens, to use the iPhone in the state that they have activated, allowing users who receive unlock codes from Apple to apply them without reinstalling lockdownd, as well allowing users to use iASign in addition to this patching method.
+
+In addition, parts of Apple's security logic have also been circumvented. All parts of lockdownd that attempt to void the iPhone's warranty have been removed. Also, lockdownd has been modified to allow all baseband versions without enabling brick mode on the phone. This allows experimentation with different modem firmwares without having to modify lockdownd.
+
+= lockdownd Patches =
+
+The following shows the location and purpose of the modifications made to the stock lockdownd binary.
