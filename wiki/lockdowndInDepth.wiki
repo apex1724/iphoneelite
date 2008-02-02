@@ -1,5 +1,4 @@
 #summary In-depth information about lockdownd
-#labels Featured
 = Overview =
 
 The lockdownd binary is responsible for several tasks, including activation, unlocking FairPlay DRM certificates, delegating communications to other services, and ensuring that Apple's security logic is implemented, to prevent people from using their iPhones in an unintended manner. This binary is the one that is either fooled or modified to allow activation, on an iPhone, that is not considered proper by Apple.
