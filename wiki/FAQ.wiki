@@ -6,7 +6,7 @@ You need to [http://dev revirginize your phone].
 
 || *Is it possible to completely remove any sign that anySIM 1.0.x, iUnlock, Unlock.app, HaRRo's GUI unlock, or George Hotz's hardware unlock ever touched my phone?* ||
 
-Yes. [http://dev revirginize your phone].
+Yes. [http://dev Revirginize your phone].
 
 || *Can I downgrade the 4.01.13 (1.1.1) baseband to the 03.14.08 (1.0.2) baseband, but keep the 1.1.1 OS firmware so I can use my unlocked iPhone in 1.1.1?* ||
 
