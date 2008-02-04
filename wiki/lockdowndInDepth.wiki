@@ -70,7 +70,7 @@ DVD Jon created an activation method that worked with older versions of the iPho
 
 An activation method called iASign was released by the iPhone Dev Team. This activation method would change the certificates on the iPhone and would send an activation token that was signed by the new certificates. This allowed fully compliant tokens, however, it required a lengthy process to activate the iPhone.
 
-Several patches have been distributed that modify the `lockdownd` binary directly. These patches generally modify the routine that checks the activation state of the iPhone and cause it to always believe it has been factory activated. The way this is done is to change step 4 to set the new activation state to FactoryActivated, set bEnableBrickState to false, and set aPreviousActivationState to false, and then jump to step 22.
+Several patches have been distributed that modify the `lockdownd` binary directly. These patches generally modify the routine that checks the activation state of the iPhone and cause it to always believe it has been factory activated. The way this is done is to change step 4 to set the new activation state to !FactoryActivated, set bEnableBrickState to false, and set aPreviousActivationState to false, and then jump to step 22.
 
 = Improvements Upon Prior Work =
 
@@ -80,7 +80,7 @@ The current patches to the `lockdownd` binary circumvent the previous issues. Ho
 
 = Current Work =
 
-The current patches have been developed to modify the verification process so that brick mode is never enabled, and all references to Unactivated, MissingSIM, MismatchedICCID, and MismatchedIMEI have been changed to FactoryActivated. This allows people who have valid account tokens, to use the iPhone in the state that they have activated, allowing users who receive unlock codes from Apple to apply them without reinstalling `lockdownd`, as well allowing users to use iASign in addition to this patching method.
+The current patches have been developed to modify the verification process so that brick mode is never enabled, and all references to Unactivated, MissingSIM, MismatchedICCID, and MismatchedIMEI have been changed to !FactoryActivated. This allows people who have valid account tokens, to use the iPhone in the state that they have activated, allowing users who receive unlock codes from Apple to apply them without reinstalling `lockdownd`, as well allowing users to use iASign in addition to this patching method.
 
 In addition, parts of Apple's security logic have also been circumvented. All parts of `lockdownd` that attempt to void the iPhone's warranty (on the 1.1.2 `lockdownd`) have been removed. Also, `lockdownd` has been modified to allow all baseband versions without enabling brick mode on the phone. This allows experimentation with different modem firmwares without having to modify `lockdownd`.
 
