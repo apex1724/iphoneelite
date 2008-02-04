@@ -1,11 +1,11 @@
 #summary In-depth information about lockdownd
 = Overview =
 
-The lockdownd binary is responsible for several tasks, including activation, unlocking FairPlay DRM certificates, delegating communications to other services, and ensuring that Apple's security logic is implemented, to prevent people from using their iPhones in an unintended manner. This binary is the one that is either fooled or modified to allow activation, on an iPhone, that is not considered proper by Apple.
+The `lockdownd` binary is responsible for several tasks, including activation, unlocking FairPlay DRM certificates, delegating communications to other services, and ensuring that Apple's security logic is implemented, to prevent people from using their iPhones in an unintended manner. This binary is the one that is either fooled or modified to allow activation, on an iPhone, that is not considered proper by Apple.
 
 = Activation States =
 
-The iPhone has been designed so that it must be properly activated before it may be used. The lockdownd binary is responsible for maintaining and verifying the activation state. The current 1.1.2 lockdownd binary has the following activation states:
+The iPhone has been designed so that it must be properly activated before it may be used. The `lockdownd` binary is responsible for maintaining and verifying the activation state. The 1.1.2 `lockdownd binary` has the following activation states:
 
 *Unactivated*: This state prevents the GUI on the iPhone from being accessed. In addition, it causes the modem to have no signal and only allows iTunes to attempt activation.
 
@@ -21,7 +21,7 @@ The iPhone has been designed so that it must be properly activated before it may
 
 *MismatchedIMEI*: This state is never entered. It is intended for when the current IMEI does not match the one in the activation token.
 
-Certain versions of iPHUC allow the user to retrieve the current activation state. In order to do this, connect an iPhone to your computer, in standard mode, and issue the command *readvalue ActivationState*. Versions compiled for Windows generally attempt to use CFShow to display the activation state. Unfortunately, this function is not documented to work on the Windows OS. However, the version of iPhoneInterface that accompanies iBrickr will correctly display the activation state.
+Certain versions of iPHUC allow the user to retrieve the current activation state. In order to do this, connect an iPhone to your computer, in standard mode, and issue the command `readvalue ActivationState`. Versions compiled for Windows generally attempt to use CFShow to display the activation state. Unfortunately, this function is not documented to work on the Windows OS. However, the version of iPhoneInterface that accompanies iBrickr will correctly display the activation state.
 
 = Activation Verification =
 
@@ -60,9 +60,9 @@ The following process outlines the steps that are used to authenticate an accoun
 
 = Apple Security Logic =
 
-Another task the lockdownd binary is concerned with is ensuring that the iPhone is in a state that Apple deems proper. One of these checks ensures that the modem's firmware version is consistent with the version that is distributed alongside the iPhone software. If these versions differ, then the modem is put into brick mode. Brick mode causes the modem to not register to any carrier and it will display no signal within the GUI.
+Another task the `lockdownd` binary is concerned with is ensuring that the iPhone is in a state that Apple deems proper. One of these checks ensures that the modem's firmware version is consistent with the version that is distributed alongside the iPhone software. If these versions differ, then the modem is put into brick mode. Brick mode causes the modem to not register to any carrier and it will display no signal within the GUI.
 
-Additionally, there are some references inside the lockdownd binary to voiding the warranty. It appears that iTunes may send messages to the iPhone informing it that its warranty is invalid. It is an assumption that this is used because it would be hard for Apple to determine if an iPhone is outside of its warranty when it has its software completely reloaded.
+Additionally, there are some references inside the 1.1.2 `lockdownd` binary to voiding the warranty. It appears that iTunes may send messages to the iPhone informing it that its warranty is invalid. It is an assumption that this is used because it would be hard for Apple to determine if an iPhone is outside of its warranty when it has its software completely reloaded.
 
 = Prior Work by Others =
 
@@ -70,23 +70,23 @@ DVD Jon created an activation method that worked with older versions of the iPho
 
 An activation method called iASign was released by the iPhone Dev Team. This activation method would change the certificates on the iPhone and would send an activation token that was signed by the new certificates. This allowed fully compliant tokens, however, it required a lengthy process to activate the iPhone.
 
-Several patches have been distributed that modify the lockdownd binary directly. These patches generally modify the routine that checks the activation state of the iPhone and cause it to always believe it has been factory activated. The way this is done is to change step 4 to set the new activation state to FactoryActivated, set bEnableBrickState to false, and set aPreviousActivationState to false, and then jump to step 22.
+Several patches have been distributed that modify the `lockdownd` binary directly. These patches generally modify the routine that checks the activation state of the iPhone and cause it to always believe it has been factory activated. The way this is done is to change step 4 to set the new activation state to FactoryActivated, set bEnableBrickState to false, and set aPreviousActivationState to false, and then jump to step 22.
 
 = Improvements Upon Prior Work =
 
 DVD Jon's activation method allows use of the iPhone GUI, but it does not allow use of the phone. iASign allows use of both the GUI and the phone, but it does not allow changing the SIM card without generating a new account token. Neither of the aforementioned activation methods will allow use of the iPhone with iTunes if a SIM card is not installed, and they leave the security logic intact.
 
-The current patches to the lockdownd binary circumvent the previous issues. However, they do not bypass Apple's security logic. They will also not allow a person who has installed these patches, to unlock their phones via an Apple-supplied unlock code without reinstalling lockdownd. Finally, they are incompatible with alternate or additional unlock methods such as iASign.
+The current patches to the `lockdownd` binary circumvent the previous issues. However, they do not bypass Apple's security logic. They will also not allow a person who has installed these patches, to unlock their phones via an Apple-supplied unlock code without reinstalling `lockdownd`. Finally, they are incompatible with alternate or additional unlock methods such as iASign.
 
 = Current Work =
 
-The current patches have been developed to modify the verification process so that brick mode is never enabled, and all references to Unactivated, MissingSIM, MismatchedICCID, and MismatchedIMEI have been changed to FactoryActivated. This allows people who have valid account tokens, to use the iPhone in the state that they have activated, allowing users who receive unlock codes from Apple to apply them without reinstalling lockdownd, as well allowing users to use iASign in addition to this patching method.
+The current patches have been developed to modify the verification process so that brick mode is never enabled, and all references to Unactivated, MissingSIM, MismatchedICCID, and MismatchedIMEI have been changed to FactoryActivated. This allows people who have valid account tokens, to use the iPhone in the state that they have activated, allowing users who receive unlock codes from Apple to apply them without reinstalling `lockdownd`, as well allowing users to use iASign in addition to this patching method.
 
-In addition, parts of Apple's security logic have also been circumvented. All parts of lockdownd that attempt to void the iPhone's warranty have been removed. Also, lockdownd has been modified to allow all baseband versions without enabling brick mode on the phone. This allows experimentation with different modem firmwares without having to modify lockdownd.
+In addition, parts of Apple's security logic have also been circumvented. All parts of `lockdownd` that attempt to void the iPhone's warranty (on the 1.1.2 `lockdownd`) have been removed. Also, `lockdownd` has been modified to allow all baseband versions without enabling brick mode on the phone. This allows experimentation with different modem firmwares without having to modify `lockdownd`.
 
-= lockdownd Patches =
+= `lockdownd` Patches =
 
-The following shows the location and purpose of the modifications made to the stock lockdownd binary.
+The following shows the location and purpose of the modifications made to the stock `lockdownd` binary.
 
 == 1.0.0 ==
 
@@ -160,4 +160,4 @@ The following shows the location and purpose of the modifications made to the st
 
 = Issues with the Current Work =
 
-If brick mode has been enabled on the iPhone, usually lockdownd stores a record that it has been enabled. However, it has been observed that a different lockdownd can enable brick mode without storing this record. When this happens, the current lockdownd is unaware of the brick mode state and won't disable brick mode. GUI access will still be allowed to the iPhone, but the phone will appear to get no signal. This is a limitation in the original design of the software. A piece of software is available, called bricktool, that will allow a user to enable or disable brick mode outside of lockdownd and fixes this issue.
+If brick mode has been enabled on the iPhone, usually `lockdownd` stores a record that it has been enabled. However, it has been observed that a different `lockdownd` can enable brick mode without storing this record. When this happens, the current `lockdownd` is unaware of the brick mode state and won't disable brick mode. GUI access will still be allowed to the iPhone, but the phone will appear to get no signal. This is a limitation in the original design of the software. A piece of software is available, called `bricktool`, that will allow a user to enable or disable brick mode outside of `lockdownd` and fixes this issue.
