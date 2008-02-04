@@ -1,5 +1,5 @@
 #summary How to jailbreak 1.1.2
-#labels Tutorial
+#labels Tutorial,Jailbreak
 It is possible to jailbreak 1.1.2 by creating a block special device in the Media partition, before updating to 1.1.2. This can be done while you are in 1.1.1.
 
 = How to Jailbreak 1.1.2 =
