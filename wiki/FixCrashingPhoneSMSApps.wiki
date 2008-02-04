@@ -4,7 +4,7 @@ After upgrading to 1.1.2 and replacing lockdownd with a patched version to get s
 
 = Why It Crashes =
 
-When you dial a number or send an SMS and enter its number, both applications (MobilePhone.app and MobileSMS.app) crash in the same manner, at the same locations, in the code. The reason for this is because it tries to format a dial string to look nice, and crashes because there is no format string found.
+When you dial a number or send an SMS and enter its number, both applications (!MobilePhone.app and MobileSMS.app) crash in the same manner, at the same locations, in the code. The reason for this is because it tries to format a dial string to look nice, and crashes because there is no format string found.
 
 Here's an interpretation of what Apple's code does:
 
