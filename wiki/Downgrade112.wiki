@@ -15,9 +15,11 @@ Normally, the baseband cannot be downgraded. The bbupdater tool only allows an u
 
 From here, you can also update to 1.1.2 as long as you have prepared for the jailbreak. To prepare for the jailbreak, install BSD Subsystem and then OktoPrep. Or, you can choose to do this manually; SSH into your phone and type the following commands:
 
+{{{
 cd /var/root/Media
 mknod disk c 14 1
 chmod 666 disk
+}}}
 
 *Perform an UPDATE to 1.1.2 - NOT a restore.*
 
