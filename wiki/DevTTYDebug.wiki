@@ -1,4 +1,4 @@
-#summary Access the baseband while it is in use by !CommCenter
+#summary Access the baseband while it is in use by CommCenter
 #labels Baseband
 It is possible to access the baseband even while it is in use by !CommCenter. To do this, simply use minicom and set the serial port to /dev/tty.debug, instead of /dev/tty.baseband.
 
