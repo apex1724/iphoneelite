@@ -1,19 +1,11 @@
-#summary Run Safari without activation. Works on 1.1.1 phones too!
+#summary How to run Safari on a 1.1.1 (or older) iPhone without activation
+#labels Tutorial
+= Instructions =
 
-= Launching Safari on unactivated iPhone =
-^Info from: Gricko666 & pilot1^
-
-
-  # enter ` *#307# ` press call, now use the back button on the top of your screen to remove ` *#307# `, now enter ` 0 ` , press call, press answer, press hold, press decline. And you get to the contact list. And thereafter every time you push the homebutton you just slide the "emergency call" slide, then enter ` 0 `, press call, press hold, press decline 
-  # Push contacts, end call and you get called again, this time hit decline and you will be at the main phone app. From there, you can play with any of the phone-app features.
-  # Create a contact, and add the following URL to it: prefs://F1
-  # Click on that URL. It will take you to system preferences. Setup the wifi so you have a working connection
-  # Press the home button. Slide for emergency call, call 0, accept. Hold. Call 0. Decline.
-  # Now edit a new contact and type in a web-address (such as http://jailbreakme.com)
-  # Enjoy safari, or your newly unlocked/activated 1.1.1 phone.
-
-==Enjoy your Safari==
-
-(yes, we can load any Safari exploit with this method on unactivated iPhone)
-
-Originally found here: [http://www.hackint0sh.org/forum/showthread.php?t=10378&page=2]
+ # Slide for emergency. Dial `*#301#` and press call. Your phone will start ringing. Use the X on the top of the screen to remove `*#301#` from the dialer. Now dial `0` and press call. Your phone will act as if someone is calling.
+ # Call, hold, decline. You should now be in the phone application.
+ # Create a contact and add two URLs: `prefs:` and any other URL (such as http://jailbreakme.com).
+ # Click on the `prefs:` URL. It will take you to the Settings screen. Connect to a Wi-Fi network.
+ # Press the home button. Slide for emergency. Dial `0`. Call, hold, decline.
+ # Now go into your contact and touch your URL.
+ # You're in Safari!
