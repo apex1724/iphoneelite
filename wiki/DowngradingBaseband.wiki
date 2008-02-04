@@ -1,5 +1,5 @@
 #summary How to downgrade the baseband
-#labels Tutorial
+#labels Tutorial,Baseband
 Normally, the baseband does not allow for downgrading. For each firmware flash, a check is present that ensures that it is an upgraded version or the same version. Luckily there is a way around this for 3.9 bootloader phones.
 
 = Prerequisites =
