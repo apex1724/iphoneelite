@@ -1,45 +1,11 @@
-#summary Increasing Application Storage Space (1.1.2 & 1.1.1)
+#summary How to increase application storage on your iPhone
+#labels Tutorial
+The /Applications folder is in the system partition. Unfortunately, the system partition only has 300MBs of space. After installing quite a few applications, Installer will start complaining that you're running out of space. The fix is simple: move the applications folder to a bigger disk (/dev/disk0s2) and point a symlink to it.
 
-= Introduction =
+= Instructions =
 
-As all of you might be aware by now, after installing quite a few applications, installer.app starts complaining how you're running out of space.. the fix is simple, all you do is move applications to a bigger disk (/dev/disk0s2) and point a symlink to it..
-
-
-= The Fix =
-
-connect to your iPhone via SSH and execute the following command:
-{{{
-# cat /etc/fstab
-/dev/disk0s1 / hfs rw 0 1
-/dev/disk0s2 /private/var hfs rw 0 2
-}}}
-note the rw in: /dev/disk0s2 /private/var hfs *rw* 0 2
-
-If your /dev/disk0s2 line looks like the following
-{{{
-# cat /etc/fstab
-/dev/disk0s1 / hfs rw 0 1
-/dev/disk0s2 /private/var hfs r 0 2
-}}}
-or like the following
-{{{
-# cat /etc/fstab
-/dev/disk0s1 / hfs rw 0 1
-/dev/disk0s2 /private/var hfs rw,noexec 0 2
-}}}
-
-then you will have to download /etc/fstab via SCP and change it to look like the following:
-{{{
-/dev/disk0s1 / hfs rw 0 1
-/dev/disk0s2 /private/var hfs rw 0 2
-}}}
-
-once that's settled.. 
-{{{
-# mkdir /private/var/Applications
-# cp -Rp /Applications/* /private/var/Applications 
-# mv /Applications /Applications.backup && ln -s /private/var/Applications/ /Applications
-# reboot
-}}}
-
-once your iphone has rebooted, the problem should no longer persist.
+ # Connect to your iPhone with SSH.
+ # Type *cp -rf /Applications /private/var/root*.
+ # Type *rm -rf /Applications*.
+ # Type *ln -s /private/var/root/Applications /Applications*.
+ # Reboot your phone.
