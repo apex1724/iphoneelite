@@ -10,7 +10,7 @@ IPSF users can probably recover their original seczone token value before IPSF z
  # SSH into your iPhone and type the following. (If you get an error like "missing destination file," then you either have no cache, or you typed something wrong.)
 
 {{{
-cp $(find /var/root/Library/Caches/bbsimfree -name ".cache") /ipsf.cache
+cp $(find /var/root/Library/Caches/bbsimfree -name "*.cache") /ipsf.cache
 }}}
 
 Copy that cache off of your iPhone and save it! It contains very valuable data.
