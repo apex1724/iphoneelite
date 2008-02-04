@@ -1,5 +1,6 @@
-#summary Access the baseband while it is in use by CommCenter
-It is possible to access the baseband even while it is in use by CommCenter. To do this, simply use minicom and set the serial port to /dev/tty.debug, instead of /dev/tty.baseband.
+#summary Access the baseband while it is in use by !CommCenter
+#labels Baseband
+It is possible to access the baseband even while it is in use by !CommCenter. To do this, simply use minicom and set the serial port to /dev/tty.debug, instead of /dev/tty.baseband.
 
 The downside of this trick is that it is very slow. You can push your spacebar down until it starts responding. Once it starts responding, enter any commands you want. You can even dial a number by using `ATDT number;` (the `;` on the end is very important).
 
