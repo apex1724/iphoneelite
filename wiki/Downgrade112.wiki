@@ -9,7 +9,7 @@
 
 = Downgrading the Baseband =
 
-Normally, the baseband cannot be downgraded. The bbupdater tool only allows an upgrade, not a downgrade. However, with a 3.9 bootloader it is possible to downgrade your baseband by first erasing the baseband (using ieraser). To do this, upload ieraser, bbupdater, the 03.14.08 baseband firmware, and the 04.02.13 secpack (in a file called 'secpack') to your phone. After setting the permissions to 755, run ieraser, and then run bbupdater to downgrade your baseband. These tools/files are commonly available.
+Normally, the baseband cannot be downgraded. The `bbupdater` tool only allows an upgrade, not a downgrade. However, with a 3.9 bootloader it is possible to downgrade your baseband by first erasing the baseband (using `ieraser`). To do this, upload `ieraser`, `bbupdater`, the 03.14.08 baseband firmware, and the 04.02.13 secpack (in a file called 'secpack') to your phone. After setting the permissions to 755, run `ieraser`, and then run `bbupdater` to downgrade your baseband. These tools/files are commonly available.
 
 = Updating to 1.1.2 =
 
