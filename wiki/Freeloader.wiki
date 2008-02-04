@@ -1,4 +1,5 @@
 #summary An open and extensible loader for the baseband
+#labels Baseband
 = Introduction =
 
 Freeloader is an attempt at writing a reusable and extensible loader framework for the baseband. Think of it as an interactive, low-level debugger for inside the baseband.
