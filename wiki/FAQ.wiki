@@ -8,15 +8,15 @@ If you've just purchased an iPhone then it is almost guaranteed to have this new
 
 || *I used anySIM 1.0.x, iUnlock, Unlock.app, HaRRo's GUI unlock, or George Hotz's hardware unlock to unlock my phone, on firmware 1.0.2 and then upgraded to 1.1.1. Now I have an IMEI starting with 0049 and my iPhone's voice/EDGE functionality does not work. What should I do?* ||
 
-You need to [http://dev revirginize your phone].
+You need to [RevirginizingTool revirginize your phone].
 
 || *Is it possible to completely remove any sign that anySIM 1.0.x, iUnlock, Unlock.app, HaRRo's GUI unlock, or George Hotz's hardware unlock ever touched my phone?* ||
 
-Yes. [http://dev Revirginize your phone].
+Yes. [RevirginizingTool Revirginize your phone].
 
 || *Can I downgrade the 4.01.13 (1.1.1) baseband to the 03.14.08 (1.0.2) baseband, but keep the 1.1.1 OS firmware so I can use my unlocked iPhone in 1.1.1?* ||
 
-This is possible, but it is not recommended. [http://dev Revirginize your phone].
+This is possible, but it is not recommended. [RevirginizingTool Revirginize your phone].
 
 || *I used George Hotz's spoofed IPSF server with success. What should I do?* ||
 
