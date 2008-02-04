@@ -6,7 +6,7 @@
  # Run UIctl (be careful with this application). Tap au.asn.ucc.matt.dropbear and choose "unload -w".
  # Install OpenSSH with Installer.
  # Connect to your iPhone using SCP or SFTP, with a user name of root, and a password of alpine (if your phone is running 1.1.x) or dottie (if your phone is running 1.0.x).
- # Using SCP or SFTP, delete the following files and folders on the iPhone: /etc/dropbear (folder) /System/Library/LaunchDaemons/au.asn.ucc.matt.dropbear.plist /usr/bin/dropbear
+ # Using SCP or SFTP, delete the following files and folders on the iPhone: /etc/dropbear (folder) /System/Library/!LaunchDaemons/au.asn.ucc.matt.dropbear.plist /usr/bin/dropbear
  # Restart the iPhone. In UIctl, verify that au.asn.ucc.matt.dropbear is gone. If so, dropbear-ssh is not loaded (which is what we want).
 
 If you have dropbear-ssh loaded with com.apple.update.plist:
