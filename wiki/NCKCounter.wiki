@@ -1,4 +1,5 @@
 #summary Initial studies on the NCK attempt counter
+#labels Baseband
 The attempt counter is the seczone block at 0xA03FAC88. This block contains the NCK attempt counter and the lock status.
 
 You cannot put unlocked bytes here without the hash of the lock code in the 0xA03FA400 zone.
