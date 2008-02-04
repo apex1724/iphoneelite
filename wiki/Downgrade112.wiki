@@ -27,4 +27,4 @@ chmod 666 disk
 
 If you get error 1, that means you are not in DFU mode, but rather recovery mode. DFU and recovery mode are two different modes. The main difference between DFU mode and recovery mode is that you can downgrade firmware in DFU mode.
 
-To fix this, you can either try the button trick again (hold the power and home buttons, release the power after 10 seconds, and release the home button after iTunes detects the phone), or you can use iPHUC to upload the WTF.s5l8900.RELEASE.dfu file (it's in the IPSWs) and then type *cmd go*.
+To fix this, you can either try the button trick again (hold the power and home buttons, release the power after 10 seconds, and release the home button after iTunes detects the phone), or you can use iPHUC to upload the WTF.s5l8900.RELEASE.dfu file (it's in the IPSWs) and then type `cmd go`.
