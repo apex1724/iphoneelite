@@ -8,6 +8,6 @@ The downside of this trick is that it is very slow. You can push your spacebar d
 
 Some possible uses are:
 
- # Manipulating the baseband in parallel with CommCenter
+ # Manipulating the baseband in parallel with !CommCenter
  # Enabling trace and debug to see what the iPhone does
  # Redirect /dev/tty.debug on a Bluetooth connection
