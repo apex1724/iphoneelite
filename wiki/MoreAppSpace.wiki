@@ -5,7 +5,7 @@ The /Applications folder is in the system partition. Unfortunately, the system p
 = Instructions =
 
  # Connect to your iPhone with SSH.
- # Type *cp -rf /Applications /private/var/root*.
- # Type *rm -rf /Applications*.
- # Type *ln -s /private/var/root/Applications /Applications*.
+ # Type `cp -rf /Applications /private/var/root`.
+ # Type `rm -rf /Applications`.
+ # Type `ln -s /private/var/root/Applications /Applications`.
  # Reboot your phone.
