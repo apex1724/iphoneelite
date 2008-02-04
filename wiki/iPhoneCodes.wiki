@@ -1,5 +1,5 @@
 #summary A list of codes found in CommCenter
-CommCenter supports feature codes that enable you to change certain things from within the phone (by simply dialing numbers).
+!CommCenter supports feature codes that enable you to change certain things from within the phone (by simply dialing numbers).
 
 = Codes =
 
