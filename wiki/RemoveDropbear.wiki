@@ -13,7 +13,7 @@ If you have dropbear-ssh loaded with com.apple.update.plist:
 
  # Install BSD Subsystem using Installer.
  # Install OpenSSH with Installer.
- # Copy com.apple.update.plist.orig from your sshkit folder to /System/Library/LaunchDaemons/com.apple.update.plist (Delete com.apple.update.plist beforehand, and make sure comm.apple.update.plist.orig is named com.apple.update after copying.)
+ # Copy com.apple.update.plist.orig from your sshkit folder to /System/Library/!LaunchDaemons/com.apple.update.plist (Delete com.apple.update.plist beforehand, and make sure comm.apple.update.plist.orig is named com.apple.update after copying.)
  # Restart the iPhone.
  # Connect to your iPhone using SCP, with a user name of root, and a password of alpine (if your phone is running 1.1.x) or dottie (if your phone is running 1.0.x).
  # Using SCP or SFTP, delete the following files and folders on the iPhone: /etc/dropbear (folder) /etc/init.d (folder) /usr/bin/dropbear /etc/hackinit.sh
