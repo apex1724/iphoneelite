@@ -11,4 +11,4 @@ It is possible to jailbreak 1.1.2 by creating a block special device in the Medi
  # Download and extract [http://s the 1.1.2 jailbreak] from [http://conceitedsoftware.com Conceited Software]. If you're on a Mac, run the jailbreak.jar file. If you're on Windows, run the jailbreak.bat file.
  # Congratulations - you're jailbroken on 1.1.2!
 
-*It is also possible to unlock 1.1.2 (on a 3.9 bootloader) with anySIM 1.2.*
+*It is also possible to [Unlock112 unlock 1.1.2] (on a 3.9 bootloader) with anySIM 1.2.*
