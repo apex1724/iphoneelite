@@ -1,31 +1,24 @@
 #summary Important cache for IPSF users
-
-= Overview =
-
+#labels Tutorial,IPSF
 IPSF users can probably recover their original seczone token value before IPSF zeroed it out.
 
-= Details =
+= Saving the Cache =
 
-== Saving the cache ==
+*IPSF users should do the following*: (This only works if you have not restored since you ran IPSF.)
 
-*IPSF users should do the following*
+ # Make sure you have BSD Subsystem and SSH on your iPhone.
+ # SSH into your iPhone and type `cp $(find /var/root/Library/Caches/bbsimfree -name "*.cache") /ipsf.cache (If you get an error like "missing destination file" then you either have no cache, or you typed something wrong)
+ # Copy that cache off of your iPhone and save it! It contains very valuable data.
 
-  * Make sure you have the BSD subsystem on your iPhone
-  * Log into your iPhone and type: `cp $(find /var/root/Library/Caches/bbsimfree -name "*.cache") /ipsf.cache`
-    * If you get an error like "missing destination file" then you either have no cache or you typed something wrong
-  * Copy that cache off of your iPhone and save it!  It contains very valuable data.
-
-The existence of this important file was reported by sh1n1gam1 on the [http://rdgaccess.com/iphone-elite/viewtopic.php?p=803 iPhone Elite forums]
-
-== Using the cache ==
+= Using the Cache =
 
 To recover your token manually, do the following:
 
-  * Using a hex editor, find the LTOKEN1.0 string in the cache and note its starting offset (call this value "a").   In my cache, a=0x1e7.
-  * Compute the offset of encrypted seczone, which will be 0x810 bytes after the start of that string: b = a + 0x810.  So for my cache, b = 0x9f7
-    * See [http://code.google.com/p/iphone-elite/wiki/HowIPSFWorks HowIPSFWorks] for details about that 0x810 constant
-  * Extract the 0x2000 bytes beginning at that offset into a file called "en"
-  * Run geohot's deipsf program to produce the "de" file.  That is your original seczone.
-    * Note that deipsf works only on little-endian architectures like x86 or ARM
-    * Sanity check the "de" file.  It should begin with 0x100 bytes of "ff", and then non-ff bytes.  If you don't see that, then something went wrong...try again.
-  * Use the decrypted seczone in a flow like this one: http://rdgaccess.com/iphone-elite/viewtopic.php?t=158
+ # Using a hex editor, find the LTOKEN1.0 string in the cache and note its starting offset (call this value "a"). In our example, a = 0x1E7.
+ # Compute the offset of the encrypted seczone, which will be 0x810 bytes after the start of that string: b = a + 0x810. So, in our example, b = 0x9F7.
+   # See [HowIPSFWorks] for details about that 0x810 constant.
+ # Extract the 0x2000 bytes beginning at that offset into a file called "en"
+ # Run George Hotz's `deipsf` program to produce the "de" file. That is your original seczone.
+   # Note that `deipsf` only works on little-endian architecture, such as X86 or ARM (not PowerPC)
+   # Sanity check the "de" file. It should begin with 0x100 bytes of "FF," and then non-FF bytes. If you don't see that, then something went wrong - try again.
+ # Use the decrypted seczone in a [http://rdgaccess.com/iphone-elite/viewtopic.php?t=158 flow like this one].
