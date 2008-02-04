@@ -32,4 +32,4 @@ Any command can be preceded by *#, ** or ##
 
 *Note 1*: It may be necessary to change the prefix from the set of `*#`, `**`, and `##`, to initiate a new log dump. The logs are not tailable, since this is a single dump, with no additional data written. So far, these log files appear to always remain the same size. Log files are stamped with the current date.
 
-*Note 2*: these tests were performed with a stock phone on the AT&T network. It is possible that these errors represent debugging features that are only available on a special debug cellular base-station (CONJECTURE only).
+*Note 2*: These tests were performed with a stock phone on the AT&T network. It is possible that these errors represent debugging features that are only available on a special debug cellular base-station (CONJECTURE only).
