@@ -10,7 +10,7 @@ Here's an interpretation of what Apple's code does:
 
  # A SIM is inserted.
  # The MNC/MCC are read out.
- # Symlinks are created: `/private/var/root/Library/Preferences/com.apple.carrier.plist` and `/private/var/root/Library/Preferences/com.apple.operator.plist` will point to `/System/Library/Frameworks/CoreTelephony.framework/Support/*CarrierName*.plist`, or, if the carrier is not found, `/System/Library/Frameworks/CoreTelephony.framework/Support/UnknownCarrier.plist.
+ # Symlinks are created: `/private/var/root/Library/Preferences/com.apple.carrier.plist` and `/private/var/root/Library/Preferences/com.apple.operator.plist` will point to `/System/Library/Frameworks/CoreTelephony.framework/Support/*CarrierName*.plist`, or, if the carrier is not found, `/System/Library/Frameworks/CoreTelephony.framework/Support/UnknownCarrier.plist`.
  # There is also a symlink from the MNC/MCC codes to the carrier in the same folder. `/System/Library/Frameworks/CoreTelephony.framework/Support/*<MNC><MCC>*` also points to `/System/Library/Frameworks/CoreTelephony.framework/Support/*CarrierName*.plist`.
  # Now, if you dial, the number formatting string is being pulled out by looking up the MCC/MNC in `/System/Library/Frameworks/UIKit.framework/PhoneFormats/UIMobileCountryCodes.plist` to find the country code. Then the country code is being looked up in `/System/Library/Frameworks/UIKit.framework/PhoneFormats/UIPhoneFormats.plist` for the string formatting rules.
 
