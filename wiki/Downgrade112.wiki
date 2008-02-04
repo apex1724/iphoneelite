@@ -4,7 +4,7 @@
 
  # Enter DFU mode by pressing the power and home buttons, and releasing the power button after 10 seconds. You may release the home button after iTunes detects your phone. Note that iTunes will say it has detected a phone in recovery mode - this is perfectly normal. (In DFU mode your screen should be white or black. If it is not, then you are in recovery mode. You want to be in DFU mode. See the troubleshooting section below.)
  # In iTunes, restore your phone. If you're on a Mac, then hold the option key down and click Restore. If you're on Windows, then hold the Shift key down and click Restore. You will be asked to select your IPSW - select your 1.0.2 IPSW.
- # Your phone will be restored and will end with error 1013 or 1015. This is normal, as the baseband cannot be downgraded (without a hack - see below). To boot into the phone, go into iPHUC and issue *cmd setenv auto-boot true*, *cmd saveenv*, and *cmd fsboot*. If you're on a Mac you can also launch iNdependence and it will boot your phone.
+ # Your phone will be restored and will end with error 1013 or 1015. This is normal, as the baseband cannot be downgraded (without a hack - see below). To boot into the phone, go into iPHUC and issue `cmd setenv auto-boot true`, `cmd saveenv`, and `cmd fsboot`. If you're on a Mac you can also launch iNdependence and it will boot your phone.
  # You've just downgraded!
 
 = Downgrading the Baseband =
