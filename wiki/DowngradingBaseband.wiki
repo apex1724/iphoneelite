@@ -7,14 +7,14 @@ Normally, the baseband does not allow for downgrading. For each firmware flash, 
  # The FLS and EEP file of the firmware you want to flash
  # The secpack of your current firmware (or a newer one)
  # The `bbupdater` and `ieraser` tools (don't forget to set the permissions to 755!)
- # MobileTerminal (you lose Wi-Fi access during this process)
+ # !MobileTerminal (you lose Wi-Fi access during this process)
 
 Upload all of these to your phone in the /usr/bin folder.
 
 = Instructions =
 
- # Launch MobileTerminal.
- # Unload CommCenter by typing `launchctl unload /System/Library/LaunchDaemons/com.apple.CommCenter.plist`.
+ # Launch !MobileTerminal.
+ # Unload !CommCenter by typing `launchctl unload /System/Library/LaunchDaemons/com.apple.CommCenter.plist`.
  # Change folders to the /usr/bin folder by typing `cd /usr/bin`.
  # Erase your baseband by typing `ieraser`.
  # Now reflash the new firmware with bbupdater (this can be any firmware version). Type `bbupdater -f firmware.fls -e firmware.eep`. Replace firmware.fls with the FLS file of the firmware you have - and firmware.eep with the EEP file of the firmware you have.
