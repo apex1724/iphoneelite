@@ -1,5 +1,4 @@
 #summary Why your phones were bricked with anySIM 1.0
-
 = Want to Know Why Your Phones Got Bricked? =
 
 anySIM and iUnlock were patched to make a routine exit of 0 (successful) to unlock the phone. The only problem was that the routine is not only called by NCK but rather by about 6 different routines total, because the baseband code is very well optimized. An analogy was made in the IRC channel that it was basically like patching memcpy. The other five didn't expect 00 to be there and were therefore spammed cross your baseband during the upgrade.
