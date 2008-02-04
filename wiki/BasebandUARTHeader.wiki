@@ -1,4 +1,5 @@
 #summary Header for UARTs in the S-Gold2 baseband
+#labels Baseband
 This header is for the UARTS in the S-Gold2 baseband. More things will follow as we get closer to writing a fully interactive loader. If there are problems with the UART responding outside of boot ROM mode, it might be because the peripheral region is marked as buffered or cacheable. This is not a normal thing. We just need cache invalidations or to modify the MMU tables to make it uncached and unbuffered. These look like physical addresses. Some experimentation will reveal the answer. If you already know, please feel free to help us out and modify this code.
 
 This came from xc164_periph_um.pdf. It is likely that the UART IP block is the same.
