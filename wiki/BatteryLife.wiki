@@ -8,7 +8,7 @@ For most seasoned iPhone hackers, disabling SSHd is a piece of cake. Unfortunate
 
  # In Installer, install the Community Sources (if you haven't already).
  # In the Utilities category, install Services.
- # Go back to the home screen and wait for the iPhone to reload the SpringBoard. Slide to unlock and launch Services.
+ # Go back to the home screen and wait for the iPhone to reload the !SpringBoard. Slide to unlock and launch Services.
  # From Services, toggle SSH off.
 
 That's it! Your battery life should now return to its original state. If you ever need to use SSH (including SFTP) again, simply use Services to turn SSH back on.
