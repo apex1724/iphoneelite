@@ -14,10 +14,10 @@ Upload all of these to your phone in the /usr/bin folder.
 = Instructions =
 
  # Launch MobileTerminal.
- # Unload CommCenter by typing *launchctl unload /System/Library/LaunchDaemons/com.apple.CommCenter.plist*.
- # Change folders to the /usr/bin folder by typing *cd /usr/bin*.
- # Erase your baseband by typing *ieraser*.
- # Now reflash the new firmware with bbupdater (this can be any firmware version). Type *bbupdater -f firmware.fls -e firmware.eep*. Replace firmware.fls with the FLS file of the firmware you have - and firmware.eep with the EEP file of the firmware you have.
+ # Unload CommCenter by typing `launchctl unload /System/Library/LaunchDaemons/com.apple.CommCenter.plist`.
+ # Change folders to the /usr/bin folder by typing `cd /usr/bin`.
+ # Erase your baseband by typing `ieraser`.
+ # Now reflash the new firmware with bbupdater (this can be any firmware version). Type `bbupdater -f firmware.fls -e firmware.eep`. Replace firmware.fls with the FLS file of the firmware you have - and firmware.eep with the EEP file of the firmware you have.
  # Reboot your phone.
 
 = Unlocking =
